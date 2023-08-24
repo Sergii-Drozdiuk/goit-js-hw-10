@@ -54,6 +54,9 @@
   .cat-desc {
     width: 500px;
   }
+  .breed-select {
+    width: 525px;
+  }
 }
 @media only screen and (min-width: 768px) {
   .cat-info {
@@ -65,5 +68,8 @@
   .cat-desc {
     width: 49%;
     padding-left: 20px;
+  }
+  .breed-select {
+    width: 50%;
   }
 }
