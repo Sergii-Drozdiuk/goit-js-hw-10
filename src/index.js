@@ -21,6 +21,8 @@ fetchBreeds()
 })
 .catch(() => {
   Notify.failure(error.textContent);
+  loader.classList.toggle('hide');
+  error.classList.toggle('hide');
 });
 
 select.addEventListener("change", createCatMarkup);
@@ -45,6 +47,8 @@ function createCatMarkup(evt) {
       catInfoDiv.innerHTML = markup;
     })
       .catch((error) => {
-      Notify.failure(error.textContent);
+        Notify.failure(error.textContent);
+        loader.classList.toggle('hide');
+        error.classList.toggle('hide');
     });
 }
