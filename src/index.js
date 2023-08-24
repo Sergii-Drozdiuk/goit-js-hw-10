@@ -13,14 +13,14 @@ select.classList.toggle('hide');
 
 fetchBreeds()
 .then((breeds) => {
-  const markup = breeds.map(({ id, name }) => `<option value="${id}">${name}</option>`).join("");
+  const markup = breeds.map(({ id, name }) => `<option value="${id}">${name}</option>`);
   select.innerHTML = markup;
   loader.classList.toggle('hide');
   select.classList.toggle('hide');
   new SlimSelect({ select: select });
 })
 .catch(() => {
-  return Notify.failure(error.textContent);
+  Notify.failure(error.textContent);
 });
 
 select.addEventListener("change", createCatMarkup);
@@ -45,6 +45,6 @@ function createCatMarkup(evt) {
       catInfoDiv.innerHTML = markup;
     })
       .catch((error) => {
-      return Notify.failure(error.textContent);
+      Notify.failure(error.textContent);
     });
 }
