@@ -23,24 +23,28 @@ fetchBreeds()
   return Notify.failure(error.textContent);
 });
 
-select.addEventListener("change", (evt) => {
+select.addEventListener("change", createCatMarkup);
+
+function createCatMarkup(evt) {
   const selectedBreedValue = evt.currentTarget.value;
-    catInfoDiv.innerHTML = '';
+  catInfoDiv.innerHTML = '';
+  catInfoDiv.classList.toggle('hide');
+  loader.classList.toggle('hide');
     fetchCatByBreed(selectedBreedValue)
       .then((obj) => {
       const { name, description, temperament } = obj.breeds[0];
       const markup = `
-        <img src="${obj.url}" alt="${name}" width="500px">
+        <img class="cat-foto" src="${obj.url}" alt="${name}" width="500px">
+        <div class="cat-desc">
         <h2 class="header">${name}</h2>
         <p class="text">${description}</p>
-        <p class="text"><b>Temperament:</b> ${temperament}</p> `;
+        <p class="text"><b>Temperament:</b> ${temperament}</p>
+        </div> `;
+      loader.classList.toggle('hide');
+      catInfoDiv.classList.toggle('hide');
       catInfoDiv.innerHTML = markup;
-      // loader.classList.toggle('hide');
-      // catInfoDiv.classList.toggle('hide');
     })
       .catch((error) => {
-      console.log(error)
-      // loader.classList.toggle('hide');
-      // error.classList.toggle('hide');
+      return Notify.failure(error.textContent);
     });
-});
+}

@@ -32,3 +32,38 @@
 .hide {
   display: none;
 }
+
+.cat-info {
+  margin-top: 20px;
+}
+
+.cat-foto {
+  padding-left: 10px;
+}
+
+.cat-desc {
+  width: 90%;
+  padding-left: 10px;
+}
+@media only screen and (max-width: 550px) {
+  .cat-foto {
+    width: 95%;
+  }
+}
+@media screen and (min-width: 551px) and (max-width: 767px) {
+  .cat-desc {
+    width: 500px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .cat-info {
+    display: flex;
+  }
+  .cat-foto {
+    width: 49%;
+  }
+  .cat-desc {
+    width: 49%;
+    padding-left: 20px;
+  }
+}
