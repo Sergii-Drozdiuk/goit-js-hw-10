@@ -19,7 +19,7 @@ fetchBreeds()
   select.classList.toggle('hide');
   new SlimSelect({ select: select });
 })
-.catch(() => {
+.catch((error) => {
   Notify.failure(error.textContent);
   loader.classList.toggle('hide');
   error.classList.toggle('hide');
