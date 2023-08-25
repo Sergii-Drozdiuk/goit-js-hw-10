@@ -30,6 +30,7 @@ select.addEventListener("change", createCatMarkup);
 function createCatMarkup(evt) {
   const selectedBreedValue = evt.currentTarget.value;
   catInfoDiv.innerHTML = '';
+  errorText.classList.add('hide');
   catInfoDiv.classList.toggle('hide');
   loader.classList.toggle('hide');
     fetchCatByBreed(selectedBreedValue)
