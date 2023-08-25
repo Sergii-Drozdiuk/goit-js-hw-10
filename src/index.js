@@ -5,10 +5,10 @@ import { fetchBreeds, fetchCatByBreed } from "./js/cat-api.js";
 
 const select = document.querySelector(".breed-select");
 const loader = document.querySelector(".loader");
-const error = document.querySelector(".error");
+const errorText = document.querySelector(".error");
 const catInfoDiv = document.querySelector(".cat-info");
 
-error.classList.add('hide');
+errorText.classList.add('hide');
 select.classList.toggle('hide');
 
 fetchBreeds()
@@ -19,10 +19,10 @@ fetchBreeds()
   select.classList.toggle('hide');
   new SlimSelect({ select: select });
 })
-.catch((error) => {
-  Notify.failure(error.textContent);
+.catch(() => {
+  Notify.failure('Oops! Something went wrong! Try reloading the page!');
   loader.classList.toggle('hide');
-  error.classList.toggle('hide');
+  errorText.classList.toggle('hide');
 });
 
 select.addEventListener("change", createCatMarkup);
@@ -46,9 +46,9 @@ function createCatMarkup(evt) {
       catInfoDiv.classList.toggle('hide');
       catInfoDiv.innerHTML = markup;
     })
-      .catch((error) => {
-        Notify.failure(error.textContent);
+      .catch(() => {
+        Notify.failure('Oops! Something went wrong! Try reloading the page!');
         loader.classList.toggle('hide');
-        error.classList.toggle('hide');
+        errorText.classList.toggle('hide');
     });
 }
