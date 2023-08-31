@@ -19,11 +19,7 @@ fetchBreeds()
   select.classList.toggle('hide');
   new SlimSelect({ select: select });
 })
-.catch(() => {
-  Notify.failure('Oops! Something went wrong! Try reloading the page!');
-  loader.classList.toggle('hide');
-  errorText.classList.toggle('hide');
-});
+.catch(errorNotify);
 
 select.addEventListener("change", createCatMarkup);
 
@@ -47,9 +43,12 @@ function createCatMarkup(evt) {
       catInfoDiv.classList.toggle('hide');
       catInfoDiv.innerHTML = markup;
     })
-      .catch(() => {
-        Notify.failure('Oops! Something went wrong! Try reloading the page!');
-        loader.classList.toggle('hide');
-        errorText.classList.toggle('hide');
-    });
+      .catch(errorNotify);
+};
+
+function errorNotify() {
+  loader.classList.toggle('hide');
+  errorText.classList.toggle('hide');
+  return Notify.failure('Oops! Something went wrong! Try reloading the page!');
 }
+
